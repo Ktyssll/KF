@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +15,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative;
+}
+
+body.white-screen {
+    background: white !important;
+    background-size: auto !important;
+    animation: none !important;
+    transition: background 0.5s ease;
 }
 
 @keyframes gradient {
@@ -28,6 +42,15 @@ body {
     }
 }
 
+.firstblock {
+    transition: opacity 0.7s ease-out;
+}
+
+.firstblock.fade-out {
+    opacity: 0;
+}
+
+
 .mainarea {
     display: flex;
     flex-direction: column;
@@ -38,10 +61,15 @@ body {
     height: 250px;
     padding: 15px;
     background-color: rgba(0, 0, 0, 0.19);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .mainpct {
     height: 150px;
+    width: 200px;
     max-width: 100%;
     position: static;
 }
@@ -52,11 +80,24 @@ body {
     border-radius: 8px;
     border: none;
     cursor: pointer;
-    color: rgb(58, 181, 111);
+    color: #00ff55;
     font-family: sans-serif;
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 1.5px;
+    background-color: rgba(0, 100, 0, 0.225);
+    border-radius: 25px;
+    outline: none;
+    overflow: hidden;
+    transition: color 0.3s 0.1s ease-out;
+    text-align: center;
+    transition-duration: 1s;
+    transition-property: background-color;
+}
+
+.mainbtn:hover {
+    color: rgb(2, 102, 46);
+    border: 1px solid rgb(72, 255, 0);
     background-color: aliceblue;
 }
 
@@ -78,6 +119,19 @@ body {
     user-select: none;
 }
 
+.hidden-element {
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.visible-element {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
 
 @media(max-width: 640px) {
     .mainarea {
@@ -131,3 +185,129 @@ body {
         user-select: none;
     }
 }
+
+.mainpage {
+    opacity: 0;
+    pointer-events: none;
+    position: relative;
+}
+
+.mainpage.visible-element {
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.navbar {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navbar.visible-element {
+    height: 120px;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    opacity: 1;
+    pointer-events: auto;
+    justify-content: space-around;
+    position: absolute;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 2px;
+    user-select: none;
+}
+
+.navbarlogo {
+    width: 86px;
+    height: 86px;
+    opacity: 1;
+}
+
+.textlogo {
+    opacity: 1;
+    font-family: Oswald;
+    font-weight: 300;
+    font-style: Light;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #029A77;
+}
+
+.navlist {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 16px;
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.navlist li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flink {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-style: Light;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    opacity: 1;
+    text-decoration: none;
+    position: relative;
+    color: #000000;
+    height: 44px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.vertical {
+    height: 55px;
+    border: 0.25px solid black;
+    top: -8px;
+    position: relative;
+}
+
+.logobtn {
+    width: 211px;
+    height: 54px;
+    opacity: 1;
+    background-color: #00ff55;
+    top: 8px;
+    border-radius: 1000px;
+    opacity: 1;
+    position: relative;
+}
+
+
+.flink:hover {
+    color: #029A77;
+}
+
+/* .flink:hover + .navlist:nth-child(2){
+    border: 0.25px solid #029A77;
+    Якби ж я знав як зробити без заморочок так щоб і ці палочки працювали разом з ховером, я б був би суперменом
+} */
